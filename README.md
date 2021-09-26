@@ -24,19 +24,30 @@ This sets up a Mattermost server with MySQL, NginX reverse proxy, and connects i
  - `bender`
  - `zoidberg`
 
-### Connecting to the server
+### Managing the Server
 
-### SSH
+### SSH to Vagrant VM
 
  - `vagrant ssh`
 
-### MySQL
+### Connecting to MySQL Database
 
 The MySQL database runs in the [MySQL Docker container](https://hub.docker.com/_/mysql), so you will have to connect to that prior to connecting to the database:
 1. Run `docker exec -it database bash`
 2. Once inside the container connect to the database with `mysql -u <Mattermost database user> -p <Mattermost database>` using the Mattermost database password.
 
-## TODO
+### Useful LDAP Commands
+
+```
+# List all details of all users
+ldapsearch -H ldap://localhost:10389 -x -b "ou=people,dc=planetexpress,dc=com" -D "cn=admin,dc=planetexpress,dc=com" -w GoodNewsEveryone "(objectClass=inetOrgPerson)"
+# List relevent details of all users
+ldapsearch -H ldap://localhost:10389 -x -b "ou=people,dc=planetexpress,dc=com" -D "cn=admin,dc=planetexpress,dc=com" -w GoodNewsEveryone "(objectClass=inetOrgPerson)" sn mail displayName uid employeeType
+# List specific user
+ldapsearch -H ldap://localhost:10389 -x -b "ou=people,dc=planetexpress,dc=com" -D "cn=admin,dc=planetexpress,dc=com" -w GoodNewsEveryone "(cn=John A. Zoidberg)"
+```
+
+### TODO
 
  - Migrate Mattermost CLI commands to use [MMCTL](https://docs.mattermost.com/manage/mmctl-command-line-tool.html)
  - Add HTTPS capability
