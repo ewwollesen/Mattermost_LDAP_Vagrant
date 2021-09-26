@@ -33,7 +33,7 @@ mkdir /opt/mattermost/data
 
 echo "Creating Mattermost config file and copying license file..."
 mv /opt/mattermost/config/config.json /opt/mattermost/config/config.json.bak
-DATA_SOURCE="$MYSQL_USER:$MYSQL_PASSWORD@tcp(127.0.0.1:3306)/mattermost?charset=utf8mb4,utf8&writeTimeout=30s"
+DATA_SOURCE="$MYSQL_USER:$MYSQL_PASSWORD@tcp(127.0.0.1:3306)/$MYSQL_DATABASE?charset=utf8mb4,utf8&writeTimeout=30s"
 jq '.SqlSettings.DataSource |= "'"$DATA_SOURCE"'"' /vagrant/config.json > /opt/mattermost/config/config.json
 cp /vagrant/mattermost.license /opt/mattermost/config/mattermost.license
 

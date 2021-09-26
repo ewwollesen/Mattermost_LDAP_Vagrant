@@ -38,5 +38,5 @@ The MySQL database runs in the [MySQL Docker container](https://hub.docker.com/_
 
 ## TODO
 
-Migrate Mattermost CLI commands to use [MMCTL](https://docs.mattermost.com/manage/mmctl-command-line-tool.html)
-Add HTTPS capability
+    - Migrate Mattermost CLI commands to use [MMCTL](https://docs.mattermost.com/manage/mmctl-command-line-tool.html)
+    - Add HTTPS capability
