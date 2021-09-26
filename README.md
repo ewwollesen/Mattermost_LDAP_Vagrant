@@ -24,7 +24,7 @@ This sets up a Mattermost server with MySQL, NginX reverse proxy, and connects i
  - `bender`
  - `zoidberg`
 
-### Managing the Server
+## Managing the Deployment
 
 ### SSH to Vagrant VM
 
