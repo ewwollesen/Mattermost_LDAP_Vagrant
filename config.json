@@ -1,8 +1,8 @@
 {
     "ServiceSettings": {
-      "SiteURL": "http://127.0.0.1:8080",
+      "SiteURL": "http://127.0.0.1/",
       "WebsocketURL": "",
-      "LicenseFileLocation": "",
+      "LicenseFileLocation": "/opt/mattermost/config/mattermost.license",
       "ListenAddress": ":8065",
       "ConnectionSecurity": "",
       "TLSCertFile": "",

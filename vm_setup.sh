@@ -31,10 +31,11 @@ tar -xzf mattermost-$MATTERMOST_VERSION-linux-amd64.tar.gz
 mv mattermost /opt
 mkdir /opt/mattermost/data
 
-echo "Creating Mattermost config file..."
+echo "Creating Mattermost config file and copying license file..."
 mv /opt/mattermost/config/config.json /opt/mattermost/config/config.json.bak
 DATA_SOURCE="$MYSQL_USER:$MYSQL_PASSWORD@tcp(127.0.0.1:3306)/mattermost?charset=utf8mb4,utf8&writeTimeout=30s"
 jq '.SqlSettings.DataSource |= "'"$DATA_SOURCE"'"' /vagrant/config.json > /opt/mattermost/config/config.json
+cp /vagrant/mattermost.license /opt/mattermost/config/mattermost.license
 
 echo "Create Mattermost sytem user and setting permissions..."
 useradd --system --user-group mattermost
@@ -55,16 +56,6 @@ echo "Creating Mattermost admin user and team..."
 echo "Starting Mattermost..."
 systemctl start mattermost.service
 
-# # Clean Up Files
-# rm -f .secrets
-# rm -f mattermost-$MATTERMOST_VERSION-linux-amd64.tar.gz
-
-#debugging only
-echo $MYSQL_ROOT_PASSWORD
-echo $MYSQL_DATABASE
-echo $MYSQL_USER
-echo $MYSQL_PASSWORD
-echo $MATTERMOST_VERSION
-echo $DATA_SOURCE
-
-
+echo "Cleaning Up Files..."
+rm -f /vagrant/.secrets
+rm -f mattermost-$MATTERMOST_VERSION-linux-amd64.tar.gz
