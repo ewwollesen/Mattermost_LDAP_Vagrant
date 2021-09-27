@@ -51,3 +51,4 @@ ldapsearch -H ldap://localhost:10389 -x -b "ou=people,dc=planetexpress,dc=com" -
 
  - Migrate Mattermost CLI commands to use [MMCTL](https://docs.mattermost.com/manage/mmctl-command-line-tool.html)
  - Add HTTPS capability
+ - Containerize NginX for easy version switching
